@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmcn6doske277"]
+[gd_scene load_steps=4 format=3 uid="uid://cmcn6doske277"]
 
 [ext_resource type="PackedScene" uid="uid://krus3yjw5wwe" path="res://scenes/spaceship.tscn" id="1_r5ots"]
+[ext_resource type="Texture2D" uid="uid://bmekidq6ibsbm" path="res://assets/bg/space/Starfields/Starfield_01-512x512.png" id="2_axugs"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rlae6"]
 distance = -279.0
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(206, 242)
+scale = Vector2(1.26758, 1.24023)
+texture = ExtResource("2_axugs")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(205, 200)
@@ -19,3 +25,5 @@ position = Vector2(205, 46)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_rlae6")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
