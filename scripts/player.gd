@@ -9,8 +9,8 @@ func _physics_process(delta: float) -> void:
 	#velocity = BOOSTER_POWER.normalized() + BOOSTER_POWER + 
 	var booster_fire := Input.get_axis("ui_left", "ui_right")
 	
-	print(rotation_degrees)
-
+	
+	print(rotation)
 	
 	if (booster_fire == -1):
 		rotate(-ROTATION)
@@ -20,6 +20,6 @@ func _physics_process(delta: float) -> void:
 	
 	
 	print(velocity)
-	velocity = Vector2(0,-10).rotated(rotation_degrees)
+	velocity = Vector2(0,-SPEED).rotated(rotation)
 
 	move_and_slide()
