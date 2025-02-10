@@ -9,7 +9,7 @@ distance = -279.0
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(206, 242)
+position = Vector2(219, 218)
 scale = Vector2(1.26758, 1.24023)
 texture = ExtResource("2_axugs")
 
@@ -23,7 +23,23 @@ position = Vector2(203, 201)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(205, 46)
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-36, 139)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_rlae6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-8, 299)
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_rlae6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(39, 158)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_rlae6")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-3, 10)
 shape = SubResource("WorldBoundaryShape2D_rlae6")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
