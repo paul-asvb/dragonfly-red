@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 150.0
 const ROTATION = 0.1
 const BULLET = preload("res://scenes/bullet.tscn")
 
@@ -10,6 +10,8 @@ func _process(delta: float) -> void:
 		var bullet_instance = BULLET.instantiate()
 	
 		get_tree().root.add_child(bullet_instance)
+		bullet_instance.rotation_degrees = rotation_degrees - 90
+		bullet_instance.position = position
 	
 func _physics_process(delta: float) -> void:
 	
