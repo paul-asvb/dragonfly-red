@@ -2,7 +2,15 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const ROTATION = 0.1
+const BULLET = preload("res://scenes/bullet.tscn")
 
+func _process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("ui_down"):
+		var bullet_instance = BULLET.instantiate()
+	
+		get_tree().root.add_child(bullet_instance)
+	
 func _physics_process(delta: float) -> void:
 	
 	
