@@ -1,10 +1,17 @@
+class_name Spaceship
 extends CharacterBody2D
 
 const SPEED = 400.0
 const ROTATION = 0.1
 const BULLET = preload("res://scenes/bullet.tscn")
+var my_name = "test"
 
 @onready var screen_size = get_viewport_rect().size
+
+func with_data(name: String) -> Spaceship:
+	my_name = name
+	get_node("label").text = "name"
+	return self
 
 func _ready():
 	pass 
