@@ -1,13 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmcn6doske277"]
+[gd_scene load_steps=4 format=3 uid="uid://cmcn6doske277"]
 
 [ext_resource type="PackedScene" uid="uid://krus3yjw5wwe" path="res://scenes/spaceship.tscn" id="1_r5ots"]
-[ext_resource type="Texture2D" uid="uid://bmekidq6ibsbm" path="res://assets/bg/space/Starfields/Starfield_01-512x512.png" id="2_axugs"]
+[ext_resource type="Texture2D" uid="uid://b4gfi3735v5k" path="res://assets/bg/space/Starfields/Starfield_03-512x512.png" id="1_rrssd"]
+[ext_resource type="Texture2D" uid="uid://c3roevelv86x2" path="res://assets/bg/space/Purple Nebula/Purple_Nebula_01-512x512.png" id="2_a08qa"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
-texture = ExtResource("2_axugs")
+texture_repeat = 2
+texture = ExtResource("1_rrssd")
+region_enabled = true
+region_rect = Rect2(0, 0, 3000, 4000)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.443137)
+texture_repeat = 2
+position = Vector2(-35.9999, 45)
+scale = Vector2(5, 5)
+texture = ExtResource("2_a08qa")
+region_rect = Rect2(0, 0, 3000, 4000)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
