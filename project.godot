@@ -13,6 +13,8 @@ config_version=5
 config/name="gameoff"
 run/main_scene="res://scenes/root.tscn"
 config/features=PackedStringArray("4.3")
+boot_splash/show_image=false
+boot_splash/image="res://assets/dragonfly-res.png"
 config/icon="res://icon.png"
 
 [autoload]
