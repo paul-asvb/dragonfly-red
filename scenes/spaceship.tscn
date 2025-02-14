@@ -1,8 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://krus3yjw5wwe"]
+[gd_scene load_steps=22 format=3 uid="uid://krus3yjw5wwe"]
 
 [ext_resource type="Texture2D" uid="uid://bxvcj3k42m365" path="res://assets/lightning/Lightning.png" id="1_0fuqo"]
 [ext_resource type="Script" path="res://scripts/spaceship.gd" id="1_6ap85"]
+[ext_resource type="Texture2D" uid="uid://dagl7y3rms45g" path="res://assets/lightning/Lightning_red.png" id="3_1tg3k"]
 [ext_resource type="Texture2D" uid="uid://bymb345eutwgw" path="res://assets/fire/All_Fire_Bullet_Pixel_16x16_01.png" id="3_a0ed7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucypv"]
+radius = 13.1529
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m8nn2"]
 atlas = ExtResource("1_0fuqo")
@@ -24,6 +28,26 @@ region = Rect2(0, 96, 32, 32)
 atlas = ExtResource("1_0fuqo")
 region = Rect2(0, 128, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsuil"]
+atlas = ExtResource("3_1tg3k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcwo8"]
+atlas = ExtResource("3_1tg3k")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eav6w"]
+atlas = ExtResource("3_1tg3k")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja18x"]
+atlas = ExtResource("3_1tg3k")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5crh"]
+atlas = ExtResource("3_1tg3k")
+region = Rect2(0, 128, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_i121h"]
 animations = [{
 "frames": [{
@@ -43,12 +67,29 @@ animations = [{
 "texture": SubResource("AtlasTexture_ugsxi")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"ship1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsuil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcwo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eav6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja18x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5crh")
+}],
+"loop": true,
+"name": &"ship2",
 "speed": 5.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ucypv"]
-radius = 7.07107
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fg7m2"]
 atlas = ExtResource("3_a0ed7")
@@ -89,36 +130,27 @@ animations = [{
 [node name="Spaceship" type="CharacterBody2D"]
 script = ExtResource("1_6ap85")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 2)
-sprite_frames = SubResource("SpriteFrames_i121h")
-animation = &"new_animation"
-autoplay = "new_animation"
-frame_progress = 0.772776
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_ucypv")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-6.50394, 19)
-rotation = 4.71239
+[node name="body" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i121h")
+animation = &"ship1"
+autoplay = "ship1"
+
+[node name="fire1_left" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6.50394, 17)
+rotation = -1.5708
 scale = Vector2(1, 0.964371)
 sprite_frames = SubResource("SpriteFrames_j62h1")
 autoplay = "default"
 frame_progress = 0.070442
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-position = Vector2(5.59527, 19)
-rotation = 4.71239
+[node name="fire_right" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.59527, 17)
+rotation = -1.5708
 scale = Vector2(1, 0.889962)
 sprite_frames = SubResource("SpriteFrames_j62h1")
 autoplay = "default"
 frame_progress = 0.763771
-
-[node name="label" type="RichTextLabel" parent="."]
-offset_left = 22.0
-offset_top = 14.0
-offset_right = 62.0
-offset_bottom = 54.0
-text = "****"
