@@ -136,7 +136,7 @@ shape = SubResource("CircleShape2D_ucypv")
 
 [node name="body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i121h")
-animation = &"ship1"
+animation = &"ship2"
 autoplay = "ship1"
 
 [node name="fire1_left" type="AnimatedSprite2D" parent="."]
