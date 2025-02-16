@@ -127,7 +127,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Spaceship" type="CharacterBody2D"]
+[node name="Spaceship" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_6ap85")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -139,7 +140,8 @@ sprite_frames = SubResource("SpriteFrames_i121h")
 animation = &"ship2"
 autoplay = "ship1"
 
-[node name="fire1_left" type="AnimatedSprite2D" parent="."]
+[node name="fire_left" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-6.50394, 17)
 rotation = -1.5708
 scale = Vector2(1, 0.964371)
@@ -148,6 +150,7 @@ autoplay = "default"
 frame_progress = 0.070442
 
 [node name="fire_right" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(5.59527, 17)
 rotation = -1.5708
 scale = Vector2(1, 0.889962)

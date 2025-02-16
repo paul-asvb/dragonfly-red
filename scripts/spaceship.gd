@@ -1,11 +1,17 @@
 class_name Spaceship
-extends CharacterBody2D
+extends RigidBody2D
 
 const SPEED = 400.0
-const ROTATION = 0.1
+const ROTATION = 200
 const BULLET = preload("res://scenes/bullet.tscn")
+var burn_left =false
+var burn_right= false
 var ship = 1
 @onready var screen_size = get_viewport_rect().size
+
+
+var thrust = Vector2(0, -100)
+var torque = 2
 
 func with_data(ship: int) -> Spaceship:
 	self.ship = ship
@@ -32,16 +38,31 @@ func _process(delta: float) -> void:
 		get_tree().root.add_child(bullet_instance)
 		bullet_instance.rotation_degrees = rotation_degrees - 90
 		bullet_instance.position = position
-	
-func _physics_process(delta: float) -> void:
-	
+
+
+func _integrate_forces(state):
 	var booster_fire = Input.get_axis("player01_left", "player01_right")
 	if ship == 2:
 		booster_fire = Input.get_axis("player02_left", "player02_right")
-		
-	if (booster_fire == -1):
-		rotate(-ROTATION)
-	if (booster_fire == 1):
-		rotate(ROTATION)
-	velocity = Vector2(0,-SPEED).rotated(rotation)
-	move_and_slide()
+	print(booster_fire)
+	if booster_fire == -1 || booster_fire == 1:
+		state.apply_force(thrust.rotated(rotation))
+	else:
+		state.apply_force(Vector2())
+	var rotation_direction = 0
+	burn_left = false
+	burn_right = false
+	if booster_fire == -1:
+		rotation_direction += ROTATION
+		burn_left = true;
+	if booster_fire == 1:
+		rotation_direction -= ROTATION
+		burn_right = true
+	
+	
+	$fire_left.visible = burn_left
+	$fire_right.visible = burn_right
+
+
+	state.apply_torque(rotation_direction * torque)
+	print(state)
