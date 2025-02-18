@@ -2,6 +2,7 @@ extends Node2D
 
 const SPACESHIP = preload("res://scenes/spaceship.tscn")
 # Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	var spaceship1 = SPACESHIP.instantiate().with_data(1)
 	add_child(spaceship1)
