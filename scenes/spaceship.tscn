@@ -221,17 +221,16 @@ angular_damp = 10.0
 script = ExtResource("1_6ap85")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_ucypv")
+one_way_collision_margin = 0.0
 
 [node name="body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i121h")
-animation = &"explosion"
+animation = &"ship1"
 autoplay = "explosion"
-frame_progress = 0.101205
+frame_progress = 0.854972
 
 [node name="fire_left" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(-6.50394, 17)
 rotation = -1.5708
 scale = Vector2(1, 0.964371)
@@ -240,7 +239,6 @@ autoplay = "default"
 frame_progress = 0.070442
 
 [node name="fire_right" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(5.59527, 17)
 rotation = -1.5708
 scale = Vector2(1, 0.889962)
