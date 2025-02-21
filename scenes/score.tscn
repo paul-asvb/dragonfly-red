@@ -1,33 +1,36 @@
-[gd_scene format=3 uid="uid://doedimdtq6htr"]
+[gd_scene load_steps=2 format=3 uid="uid://doedimdtq6htr"]
+
+[ext_resource type="Script" path="res://scenes/score.gd" id="1_r62vi"]
 
 [node name="Score" type="Node2D"]
+script = ExtResource("1_r62vi")
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="."]
-offset_left = 137.0
-offset_top = 33.0
-offset_right = 177.0
-offset_bottom = 73.0
+[node name="p1-text" type="RichTextLabel" parent="."]
+offset_left = 17.0
+offset_top = 11.0
+offset_right = 101.0
+offset_bottom = 40.0
+text = "Player 1"
+
+[node name="p1" type="RichTextLabel" parent="."]
+offset_left = 37.0
+offset_top = 36.0
+offset_right = 77.0
+offset_bottom = 76.0
 text = "0
 "
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="."]
-offset_left = 31.0
-offset_top = 34.0
-offset_right = 71.0
-offset_bottom = 74.0
-text = "0
-"
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-offset_left = 114.0
-offset_top = 9.0
-offset_right = 205.0
-offset_bottom = 39.0
+[node name="p2-text" type="RichTextLabel" parent="."]
+offset_left = 120.0
+offset_top = 11.0
+offset_right = 211.0
+offset_bottom = 41.0
 text = "Player 2"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 11.0
-offset_top = 9.0
-offset_right = 95.0
-offset_bottom = 38.0
-text = "Player 1"
+[node name="p2" type="RichTextLabel" parent="."]
+offset_left = 143.0
+offset_top = 35.0
+offset_right = 169.0
+offset_bottom = 64.0
+text = "0
+"

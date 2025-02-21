@@ -2,7 +2,7 @@ class_name Spaceship
 extends RigidBody2D
 
 const SPEED = 400.0
-const ROTATION = 360
+const ROTATION = 360*5
 const BULLET = preload("res://scenes/bullet.tscn")
 var burn_left =false
 var burn_right= false
@@ -68,3 +68,9 @@ func _integrate_forces(state):
 
 
 	state.apply_torque(rotation_direction * torque)
+
+func _physics_process(delta):
+	var collision_info = get_contact_count()
+	print(collision_info)
+	if collision_info > 0:
+		get_node("body").set_animation("explosion")
