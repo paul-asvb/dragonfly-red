@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 800;
+const SPEED = 200;
 @onready var screen_size = get_viewport_rect().size
 
 

@@ -19,7 +19,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GLOBAL="*res://scripts/GLOBAL.gd"
+GLOBAL="*res://scripts/root.gd"
 
 [display]
 
