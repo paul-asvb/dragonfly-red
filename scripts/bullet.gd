@@ -10,7 +10,6 @@ func _process(delta: float) -> void:
 	position.y = wrapf(position.y, -screen_size.y/2, screen_size.y/2)
 	position += transform.x * SPEED * delta;
 	
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await get_tree().create_timer(1.0).timeout  # Wait for 3 seconds
+	await get_tree().create_timer(1.0).timeout  
 	queue_free()  

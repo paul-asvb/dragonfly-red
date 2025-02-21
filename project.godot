@@ -17,10 +17,6 @@ boot_splash/show_image=false
 boot_splash/image="res://assets/dragonfly-res.png"
 config/icon="res://icon.png"
 
-[autoload]
-
-GLOBAL="*res://scripts/root.gd"
-
 [display]
 
 window/size/viewport_width=1920

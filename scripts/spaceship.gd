@@ -9,7 +9,6 @@ var burn_right= false
 var ship = 1
 @onready var screen_size = get_viewport_rect().size
 
-
 var thrust = Vector2(0, -100)
 var torque = 2
 
@@ -18,6 +17,7 @@ func with_data(ship: int) -> Spaceship:
 	return self
 
 func _ready() -> void:
+	print("redy");
 	if ship == 1:
 		get_node("body").set_animation("ship1")
 	else:
@@ -32,9 +32,10 @@ func _process(delta: float) -> void:
 	var shoot_button = Input.is_action_just_pressed("player01_shoot")
 	
 	if self.ship == 2:
-		shoot_button = Input.is_action_just_pressed("player02_shoot")
+		shoot_button = Input.is_action_just_pressed("player02_shoot")	
 	
 	if shoot_button:
+		print("shoot")
 		var bullet_instance = BULLET.instantiate()
 		get_tree().root.add_child(bullet_instance)
 		bullet_instance.rotation_degrees = rotation_degrees - 90
