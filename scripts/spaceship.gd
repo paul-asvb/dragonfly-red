@@ -69,8 +69,8 @@ func _integrate_forces(state):
 
 	state.apply_torque(rotation_direction * torque)
 
-func _physics_process(delta):
-	var collision_info = get_slide()
-	print(collision_info)
-	if collision_info > 0:
-		get_node("body").set_animation("explosion")
+#func _physics_process(delta):
+	#var collision_info = get_slide()
+	#print(collision_info)
+	#if collision_info > 0:
+		#get_node("body").set_animation("explosion")
