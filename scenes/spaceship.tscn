@@ -1,9 +1,9 @@
 [gd_scene load_steps=35 format=3 uid="uid://krus3yjw5wwe"]
 
-[ext_resource type="Texture2D" uid="uid://bxvcj3k42m365" path="res://assets/lightning/Lightning.png" id="1_0fuqo"]
 [ext_resource type="Script" path="res://scripts/spaceship.gd" id="1_6ap85"]
 [ext_resource type="Texture2D" uid="uid://dxrnbmgx7m1ms" path="res://assets/fire/explosions/848.png" id="2_wisjm"]
 [ext_resource type="Texture2D" uid="uid://dagl7y3rms45g" path="res://assets/lightning/Lightning_red.png" id="3_1tg3k"]
+[ext_resource type="Texture2D" uid="uid://b4dlxh5kexftb" path="res://assets/lightning/Lightning_yellow.png" id="3_8h62c"]
 [ext_resource type="Texture2D" uid="uid://bymb345eutwgw" path="res://assets/fire/All_Fire_Bullet_Pixel_16x16_01.png" id="3_a0ed7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vhclo"]
@@ -56,24 +56,24 @@ region = Rect2(576, 256, 64, 64)
 atlas = ExtResource("2_wisjm")
 region = Rect2(640, 256, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m8nn2"]
-atlas = ExtResource("1_0fuqo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xhbi"]
+atlas = ExtResource("3_8h62c")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_baow6"]
-atlas = ExtResource("1_0fuqo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kep1x"]
+atlas = ExtResource("3_8h62c")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jwdul"]
-atlas = ExtResource("1_0fuqo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho5lp"]
+atlas = ExtResource("3_8h62c")
 region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rji2d"]
-atlas = ExtResource("1_0fuqo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyrv3"]
+atlas = ExtResource("3_8h62c")
 region = Rect2(0, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ugsxi"]
-atlas = ExtResource("1_0fuqo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_88hhq"]
+atlas = ExtResource("3_8h62c")
 region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vsuil"]
@@ -138,19 +138,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m8nn2")
+"texture": SubResource("AtlasTexture_3xhbi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_baow6")
+"texture": SubResource("AtlasTexture_kep1x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jwdul")
+"texture": SubResource("AtlasTexture_ho5lp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rji2d")
+"texture": SubResource("AtlasTexture_jyrv3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ugsxi")
+"texture": SubResource("AtlasTexture_88hhq")
 }],
 "loop": true,
 "name": &"ship1",
@@ -228,7 +228,7 @@ one_way_collision_margin = 0.0
 sprite_frames = SubResource("SpriteFrames_i121h")
 animation = &"ship1"
 autoplay = "explosion"
-frame_progress = 0.854972
+frame_progress = 0.496406
 
 [node name="fire_left" type="AnimatedSprite2D" parent="."]
 position = Vector2(-6.50394, 17)
@@ -247,3 +247,5 @@ autoplay = "default"
 frame_progress = 0.763771
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

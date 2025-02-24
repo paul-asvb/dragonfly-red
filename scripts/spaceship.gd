@@ -7,7 +7,13 @@ const BULLET = preload("res://scenes/bullet.tscn")
 var burn_left =false
 var burn_right= false
 var ship = 1
+var lives = 5
+
 @onready var screen_size = get_viewport_rect().size
+
+signal hit
+
+
 
 var thrust = Vector2(0, -100)
 var torque = 2
@@ -60,23 +66,7 @@ func _integrate_forces(state):
 		rotation_direction -= ROTATION
 		burn_right = true
 	
-	
 	$fire_left.visible = burn_left
 	$fire_right.visible = burn_right
 
-
 	state.apply_torque(rotation_direction * torque)
-	
-	
-	
-
-#func _physics_process(delta):
-	#var collision_info = get_slide()
-	#print(collision_info)
-	#if collision_info > 0:
-		#get_node("body").set_animation("explosion")
-
-
-func _on_body_entered(body: Node) -> void:
-	print(body)
-	pass # Replace with function body.

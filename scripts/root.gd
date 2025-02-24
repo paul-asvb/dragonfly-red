@@ -4,7 +4,7 @@ const SPACESHIP = preload("res://scenes/spaceship.tscn")
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
-	print("root ready")
+	
 	var spaceship1 = SPACESHIP.instantiate().with_data(1)
 	add_child(spaceship1)
 	spaceship1.rotation_degrees = 90;

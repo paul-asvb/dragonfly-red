@@ -13,6 +13,6 @@ func _ready() -> void:
 	await get_tree().create_timer(ttl).timeout  
 	queue_free()  
 
-
-func _on_area_entered(area: Area2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
+	
 	pass # Replace with function body.
