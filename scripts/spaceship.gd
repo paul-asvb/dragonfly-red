@@ -17,7 +17,6 @@ func with_data(ship: int) -> Spaceship:
 	return self
 
 func _ready() -> void:
-	print("redy");
 	if ship == 1:
 		get_node("body").set_animation("ship1")
 	else:
@@ -35,7 +34,6 @@ func _process(delta: float) -> void:
 		shoot_button = Input.is_action_just_pressed("player02_shoot")	
 	
 	if shoot_button:
-		print("shoot")
 		var bullet_instance = BULLET.instantiate()
 		get_tree().root.add_child(bullet_instance)
 		bullet_instance.rotation_degrees = rotation_degrees - 90
@@ -68,9 +66,17 @@ func _integrate_forces(state):
 
 
 	state.apply_torque(rotation_direction * torque)
+	
+	
+	
 
 #func _physics_process(delta):
 	#var collision_info = get_slide()
 	#print(collision_info)
 	#if collision_info > 0:
 		#get_node("body").set_animation("explosion")
+
+
+func _on_body_entered(body: Node) -> void:
+	print(body)
+	pass # Replace with function body.

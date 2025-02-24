@@ -39,12 +39,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wujpi"]
-radius = 3.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ji1p6"]
+radius = 2.0
 
-[node name="Bullet" type="RigidBody2D"]
-mass = 0.001
-gravity_scale = 0.0
+[node name="Bullet" type="Area2D"]
 script = ExtResource("1_5l47m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -52,4 +50,7 @@ sprite_frames = SubResource("SpriteFrames_xhu87")
 frame_progress = 0.338973
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_wujpi")
+shape = SubResource("CircleShape2D_ji1p6")
+one_way_collision_margin = 0.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,8 +1,7 @@
 extends Node2D
-
-const SPEED = 200;
+const SPEED = 400;
+const ttl = 10.0;
 @onready var screen_size = get_viewport_rect().size
-
 
 func _process(delta: float) -> void:
 	screen_size = get_viewport_rect().size
@@ -11,5 +10,9 @@ func _process(delta: float) -> void:
 	position += transform.x * SPEED * delta;
 	
 func _ready() -> void:
-	await get_tree().create_timer(1.0).timeout  
+	await get_tree().create_timer(ttl).timeout  
 	queue_free()  
+
+
+func _on_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

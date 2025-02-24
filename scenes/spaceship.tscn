@@ -245,3 +245,5 @@ scale = Vector2(1, 0.889962)
 sprite_frames = SubResource("SpriteFrames_j62h1")
 autoplay = "default"
 frame_progress = 0.763771
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
