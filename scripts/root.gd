@@ -4,7 +4,13 @@ const SPACESHIP = preload("res://scenes/spaceship.tscn")
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
-	
+	reset()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func reset() -> void:
 	var spaceship1 = SPACESHIP.instantiate().with_data(1)
 	add_child(spaceship1)
 	spaceship1.rotation_degrees = 90;
@@ -14,12 +20,3 @@ func _ready() -> void:
 	add_child(spaceship2)
 	spaceship2.rotation_degrees = -90;
 	spaceship2.position = Vector2(600,0)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_button_pressed() -> void:
-	print("pressed")
-	pass # Replace with function body.

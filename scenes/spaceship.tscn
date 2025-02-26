@@ -132,7 +132,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ue5cl")
 }],
-"loop": true,
+"loop": false,
 "name": &"explosion",
 "speed": 16.0
 }, {
@@ -226,9 +226,8 @@ one_way_collision_margin = 0.0
 
 [node name="body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i121h")
-animation = &"ship1"
+animation = &"explosion"
 autoplay = "explosion"
-frame_progress = 0.496406
 
 [node name="fire_left" type="AnimatedSprite2D" parent="."]
 position = Vector2(-6.50394, 17)
@@ -247,5 +246,6 @@ autoplay = "default"
 frame_progress = 0.763771
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

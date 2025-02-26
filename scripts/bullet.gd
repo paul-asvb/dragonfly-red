@@ -1,6 +1,9 @@
+class_name Bullet
 extends Node2D
+
 const SPEED = 400;
 const ttl = 10.0;
+var belongs_to = 0;
 @onready var screen_size = get_viewport_rect().size
 
 func _process(delta: float) -> void:
@@ -14,5 +17,6 @@ func _ready() -> void:
 	queue_free()  
 
 func _on_body_entered(body: Node2D) -> void:
-	
-	pass # Replace with function body.
+	if body.has_signal("hit"):
+		body.emit_signal("hit",belongs_to)
+		print(body.name)

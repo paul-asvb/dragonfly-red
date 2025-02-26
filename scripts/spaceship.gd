@@ -7,13 +7,10 @@ const BULLET = preload("res://scenes/bullet.tscn")
 var burn_left =false
 var burn_right= false
 var ship = 1
-var lives = 5
+
+signal hit(int)
 
 @onready var screen_size = get_viewport_rect().size
-
-signal hit
-
-
 
 var thrust = Vector2(0, -100)
 var torque = 2
@@ -41,6 +38,7 @@ func _process(delta: float) -> void:
 	
 	if shoot_button:
 		var bullet_instance = BULLET.instantiate()
+		bullet_instance.belongs_to =ship
 		get_tree().root.add_child(bullet_instance)
 		bullet_instance.rotation_degrees = rotation_degrees - 90
 		bullet_instance.position = position
@@ -70,3 +68,8 @@ func _integrate_forces(state):
 	$fire_right.visible = burn_right
 
 	state.apply_torque(rotation_direction * torque)
+
+func _on_hit(by) -> void:
+	if ship != by:
+		get_node("body").set_animation("explosion")
+		EventBus.spaceship_hit.emit(ship)

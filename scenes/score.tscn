@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://doedimdtq6htr"]
+[gd_scene load_steps=2 format=3 uid="uid://76m3nltffrbp"]
 
 [ext_resource type="Script" path="res://scenes/score.gd" id="1_r62vi"]
 
@@ -34,3 +34,7 @@ offset_right = 169.0
 offset_bottom = 64.0
 text = "0
 "
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
