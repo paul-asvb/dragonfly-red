@@ -1,35 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmcn6doske277"]
+[gd_scene load_steps=2 format=3 uid="uid://klfswh2vs5qd"]
 
-[ext_resource type="Texture2D" uid="uid://b4gfi3735v5k" path="res://assets/bg/space/Starfields/Starfield_03-512x512.png" id="1_rrssd"]
-[ext_resource type="Script" path="res://scripts/root.gd" id="1_u5g1b"]
-[ext_resource type="Texture2D" uid="uid://c3roevelv86x2" path="res://assets/bg/space/Purple Nebula/Purple_Nebula_01-512x512.png" id="2_a08qa"]
-[ext_resource type="PackedScene" uid="uid://76m3nltffrbp" path="res://scenes/score.tscn" id="4_lexqu"]
+[ext_resource type="Script" path="res://scenes/root.gd" id="1_q3vs3"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_u5g1b")
-
-[node name="bg1" type="Sprite2D" parent="."]
-texture_repeat = 2
-texture = ExtResource("1_rrssd")
-region_enabled = true
-region_rect = Rect2(0, 0, 3000, 4000)
-
-[node name="bg2" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.443137)
-texture_repeat = 2
-position = Vector2(-35.9999, 45)
-scale = Vector2(5, 5)
-texture = ExtResource("2_a08qa")
-region_rect = Rect2(0, 0, 3000, 4000)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Score" parent="." instance=ExtResource("4_lexqu")]
-position = Vector2(-191, -549)
-scale = Vector2(2, 2)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 82.0
-offset_bottom = 56.0
-text = "TEXT"
-fit_content = true
+script = ExtResource("1_q3vs3")

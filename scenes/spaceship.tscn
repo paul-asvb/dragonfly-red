@@ -249,3 +249,6 @@ frame_progress = 0.763771
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="animation_finished" from="body" to="." method="_on_body_animation_finished"]
+[connection signal="tree_entered" from="body" to="." method="_on_body_tree_entered"]

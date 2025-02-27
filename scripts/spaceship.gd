@@ -21,9 +21,9 @@ func with_data(ship: int) -> Spaceship:
 
 func _ready() -> void:
 	if ship == 1:
-		get_node("body").set_animation("ship1")
+		$body.set_animation("ship1")
 	else:
-		get_node("body").set_animation("ship2")
+		$body.set_animation("ship2")
 
 func _process(delta: float) -> void:
 	screen_size = get_viewport_rect().size
@@ -71,5 +71,5 @@ func _integrate_forces(state):
 
 func _on_hit(by) -> void:
 	if ship != by:
-		get_node("body").set_animation("explosion")
+		$body.set_animation("explosion")
 		EventBus.spaceship_hit.emit(ship)
