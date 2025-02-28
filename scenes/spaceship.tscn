@@ -224,9 +224,14 @@ script = ExtResource("1_6ap85")
 shape = SubResource("CircleShape2D_ucypv")
 one_way_collision_margin = 0.0
 
+[node name="explosion" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i121h")
+animation = &"ship2"
+autoplay = "explosion"
+
 [node name="body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i121h")
-animation = &"explosion"
+animation = &"ship1"
 autoplay = "explosion"
 
 [node name="fire_left" type="AnimatedSprite2D" parent="."]
@@ -250,5 +255,7 @@ frame_progress = 0.763771
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="animation_finished" from="explosion" to="." method="_on_body_animation_finished"]
+[connection signal="tree_entered" from="explosion" to="." method="_on_body_tree_entered"]
 [connection signal="animation_finished" from="body" to="." method="_on_body_animation_finished"]
 [connection signal="tree_entered" from="body" to="." method="_on_body_tree_entered"]
