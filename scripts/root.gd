@@ -6,6 +6,8 @@ var game: Game;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Timer.start()
+	await  $Timer.timeout
 	game = GAME.instantiate()
 	add_child(game)
 	add_child(SCORE.instantiate())
@@ -14,10 +16,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func reset(int) -> void:
-	await get_tree().create_timer(5).timeout
-	#game.reset(0)
+	print("reset")
 	
-
+func _process(delta: float) -> void:
+	$TimeText.text = str($Timer.time_left).pad_decimals(2)
 
 func _on_tree_exited() -> void:
 	EventBus.spaceship_hit.disconnect(reset)

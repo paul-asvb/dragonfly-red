@@ -1,0 +1,87 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://bwfig1ycxr3gs"]
+
+[ext_resource type="Texture2D" uid="uid://b4dlxh5kexftb" path="res://assets/lightning/Lightning_yellow.png" id="2_00nck"]
+[ext_resource type="Texture2D" uid="uid://dagl7y3rms45g" path="res://assets/lightning/Lightning_red.png" id="3_dt8gi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xhbi"]
+atlas = ExtResource("2_00nck")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kep1x"]
+atlas = ExtResource("2_00nck")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho5lp"]
+atlas = ExtResource("2_00nck")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyrv3"]
+atlas = ExtResource("2_00nck")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88hhq"]
+atlas = ExtResource("2_00nck")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsuil"]
+atlas = ExtResource("3_dt8gi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcwo8"]
+atlas = ExtResource("3_dt8gi")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eav6w"]
+atlas = ExtResource("3_dt8gi")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja18x"]
+atlas = ExtResource("3_dt8gi")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5crh"]
+atlas = ExtResource("3_dt8gi")
+region = Rect2(0, 128, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xhbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kep1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho5lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyrv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88hhq")
+}],
+"loop": true,
+"name": &"ship1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsuil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcwo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eav6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja18x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5crh")
+}],
+"loop": true,
+"name": &"ship2",
+"speed": 5.0
+}]

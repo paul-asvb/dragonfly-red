@@ -17,5 +17,6 @@ func _ready() -> void:
 	queue_free()  
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.has_signal("hit"):
-		body.emit_signal("hit",belongs_to)
+	if "ship" in body:
+		if body.get("ship") != belongs_to:
+			body.emit_signal("hit",belongs_to)

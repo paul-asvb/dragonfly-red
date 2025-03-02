@@ -20,6 +20,7 @@ func with_data(ship: int) -> Spaceship:
 	return self
 
 func _ready() -> void:
+	$explosion.visible = false
 	if ship == 1:
 		$body.set_animation("ship1")
 	else:
@@ -39,7 +40,7 @@ func _process(delta: float) -> void:
 	if shoot_button:
 		var bullet_instance = BULLET.instantiate()
 		bullet_instance.belongs_to =ship
-		get_tree().root.add_child(bullet_instance)
+		get_parent().add_child(bullet_instance)
 		bullet_instance.rotation_degrees = rotation_degrees - 90
 		bullet_instance.position = position
 
@@ -71,5 +72,6 @@ func _integrate_forces(state):
 
 func _on_hit(by) -> void:
 	if ship != by:
-		$body.set_animation("explosion")
+		$body.visible = false
+		$explosion.play("explosion")
 		EventBus.spaceship_hit.emit(ship)
