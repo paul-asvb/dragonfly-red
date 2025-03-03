@@ -1,8 +1,8 @@
 class_name Bullet
 extends Node2D
 
-const SPEED = 400;
-const ttl = 10.0;
+const SPEED = 300;
+const ttl = 4.0;
 var belongs_to = 0;
 @onready var screen_size = get_viewport_rect().size
 
@@ -13,7 +13,9 @@ func _process(delta: float) -> void:
 	position += transform.x * SPEED * delta;
 	
 func _ready() -> void:
-	await get_tree().create_timer(ttl).timeout  
+	if belongs_to == 2:
+		$fire.set_animation("red");
+	await get_tree().create_timer(ttl).timeout
 	queue_free()  
 
 func _on_body_entered(body: Node2D) -> void:

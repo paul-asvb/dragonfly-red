@@ -73,5 +73,6 @@ func _integrate_forces(state):
 func _on_hit(by) -> void:
 	if ship != by:
 		$body.visible = false
+		$explosion.visible = true
 		$explosion.play("explosion")
 		EventBus.spaceship_hit.emit(ship)

@@ -4,11 +4,6 @@ extends Node2D
 const SPACESHIP = preload("res://scenes/spaceship.tscn")
 var spaceship1 
 var spaceship2 
-# This enum lists all the possible states the character can be in.
-enum States {WAITING, RUNNING}
-
-# This variable keeps track of the character's current state.
-var state: States = States.WAITING
 
 func _ready() -> void:
 	spaceship1 = SPACESHIP.instantiate().with_data(1)

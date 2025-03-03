@@ -10,7 +10,7 @@ func _ready() -> void:
 	await  $Timer.timeout
 	game = GAME.instantiate()
 	add_child(game)
-	add_child(SCORE.instantiate())
+
 	
 	
 

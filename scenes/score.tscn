@@ -6,32 +6,40 @@
 script = ExtResource("1_r62vi")
 
 [node name="p1-text" type="RichTextLabel" parent="."]
-offset_left = 17.0
-offset_top = 11.0
-offset_right = 101.0
-offset_bottom = 40.0
+offset_left = 27.0
+offset_top = 16.0
+offset_right = 213.0
+offset_bottom = 90.0
+theme_override_colors/default_color = Color(0.848217, 0.000130434, 0.709055, 1)
+theme_override_font_sizes/normal_font_size = 40
 text = "Player 1"
 
 [node name="p1" type="RichTextLabel" parent="."]
-offset_left = 37.0
-offset_top = 36.0
-offset_right = 77.0
-offset_bottom = 76.0
+offset_left = 87.0
+offset_top = 77.0
+offset_right = 171.0
+offset_bottom = 163.0
+theme_override_colors/default_color = Color(0.848217, 0.000130434, 0.709055, 1)
+theme_override_font_sizes/normal_font_size = 40
 text = "0
 "
 
 [node name="p2-text" type="RichTextLabel" parent="."]
-offset_left = 120.0
-offset_top = 11.0
-offset_right = 211.0
-offset_bottom = 41.0
+offset_left = 237.0
+offset_top = 15.0
+offset_right = 478.0
+offset_bottom = 124.0
+theme_override_colors/default_color = Color(0.848217, 0.000130434, 0.709055, 1)
+theme_override_font_sizes/normal_font_size = 40
 text = "Player 2"
 
 [node name="p2" type="RichTextLabel" parent="."]
-offset_left = 143.0
-offset_top = 35.0
-offset_right = 169.0
-offset_bottom = 64.0
+offset_left = 295.0
+offset_top = 74.0
+offset_right = 339.0
+offset_bottom = 143.0
+theme_override_colors/default_color = Color(0.848217, 0.000130434, 0.709055, 1)
+theme_override_font_sizes/normal_font_size = 40
 text = "0
 "
 
