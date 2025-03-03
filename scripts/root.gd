@@ -10,7 +10,7 @@ func _ready() -> void:
 	await  $Timer.timeout
 	game = GAME.instantiate()
 	add_child(game)
-
+	add_child(SCORE.instantiate())
 	
 	
 
@@ -19,7 +19,7 @@ func reset(int) -> void:
 	print("reset")
 	
 func _process(delta: float) -> void:
-	$TimeText.text = str($Timer.time_left).pad_decimals(2)
+	$Countdown.text = str($Timer.time_left).pad_decimals(2)
 
 func _on_tree_exited() -> void:
 	EventBus.spaceship_hit.disconnect(reset)

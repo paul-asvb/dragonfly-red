@@ -6,6 +6,7 @@ var spaceship1
 var spaceship2 
 
 func _ready() -> void:
+	print("game")
 	spaceship1 = SPACESHIP.instantiate().with_data(1)
 	add_child(spaceship1)
 	spaceship1.rotation_degrees = 90;

@@ -1,8 +1,8 @@
 class_name Bullet
 extends Node2D
 
-const SPEED = 300;
-const ttl = 4.0;
+const SPEED = 200;
+const ttl = 2.0;
 var belongs_to = 0;
 @onready var screen_size = get_viewport_rect().size
 
