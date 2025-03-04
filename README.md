@@ -15,5 +15,5 @@ https://itch.io/game-assets/free/tag-pixel-art/tag-spaceship
 spitscreen local multiplayer:
 	https://www.youtube.com/watch?v=tkBgYD0R8R4
 
-signal bus:
-	verlauf
+cooldown button:
+https://kidscancode.org/godot_recipes/3.x/ui/cooldown_button/index.html
