@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://bwfig1ycxr3gs"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bwfig1ycxr3gs"]
 
 [ext_resource type="Texture2D" uid="uid://b4dlxh5kexftb" path="res://assets/lightning/Lightning_yellow.png" id="2_00nck"]
 [ext_resource type="Texture2D" uid="uid://dagl7y3rms45g" path="res://assets/lightning/Lightning_red.png" id="3_dt8gi"]
