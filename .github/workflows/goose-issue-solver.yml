@@ -41,6 +41,25 @@ jobs:
           echo "Issue context written:"
           cat issue_context.txt
 
+      - name: Comment on issue — starting
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ steps.issue.outputs.number }}" \
+            --body "🦆 Goose is now working on this issue. A pull request will be opened once the implementation is ready."
+
+      - name: Validate API key
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "${ANTHROPIC_API_KEY}" ]; then
+            echo "ERROR: ANTHROPIC_API_KEY secret is not set."
+            echo "Go to: Settings → Secrets and variables → Actions → New repository secret"
+            echo "Name: ANTHROPIC_API_KEY  Value: your Anthropic API key"
+            exit 1
+          fi
+          echo "API key is present (length: ${#ANTHROPIC_API_KEY})"
+
       - name: Install Goose CLI
         run: |
           mkdir -p /home/runner/.local/bin
@@ -53,11 +72,13 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           mkdir -p ~/.config/goose
-          cat > ~/.config/goose/config.yaml <<EOF
+          cat > ~/.config/goose/config.yaml << 'EOF'
           GOOSE_PROVIDER: anthropic
           GOOSE_MODEL: claude-sonnet-4-5
           keyring: false
           EOF
+          # Goose reads the API key from the environment, but also supports it in the profile
+          echo "ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}" >> ~/.config/goose/config.yaml
 
       - name: Write Goose instructions
         run: |
