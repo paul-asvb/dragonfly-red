@@ -1,0 +1,161 @@
+name: Goose Issue Solver
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  solve-issue:
+    name: Solve issue with Goose
+    if: github.event.label.name == 'goose'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gather issue context
+        id: issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+          BRANCH_NAME="goose/issue-${ISSUE_NUMBER}"
+
+          echo "number=${ISSUE_NUMBER}" >> $GITHUB_OUTPUT
+          echo "branch=${BRANCH_NAME}" >> $GITHUB_OUTPUT
+
+          # Fetch full issue body including comments
+          gh issue view "${ISSUE_NUMBER}" --json title,body,comments \
+            --jq '"TITLE: " + .title + "\n\nBODY:\n" + .body + "\n\nCOMMENTS:\n" + ([.comments[].body] | join("\n---\n"))' \
+            > issue_context.txt
+
+          echo "Issue context written:"
+          cat issue_context.txt
+
+      - name: Install Goose CLI
+        run: |
+          mkdir -p /home/runner/.local/bin
+          curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh \
+            | CONFIGURE=false GOOSE_BIN_DIR=/home/runner/.local/bin bash
+          echo "/home/runner/.local/bin" >> $GITHUB_PATH
+
+      - name: Configure Goose
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          mkdir -p ~/.config/goose
+          cat > ~/.config/goose/config.yaml <<EOF
+          GOOSE_PROVIDER: anthropic
+          GOOSE_MODEL: claude-sonnet-4-5
+          keyring: false
+          EOF
+
+      - name: Write Goose instructions
+        run: |
+          ISSUE_NUMBER="${{ steps.issue.outputs.number }}"
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+
+          cat > instructions.txt <<EOF
+          You are an AI agent working on a Godot 4 game called "dragonfly-red" — a 2D space shooter.
+          The project uses GDScript. Source files are in ./scripts/, scenes in ./scenes/, assets in ./assets/.
+
+          Your task is to implement the following GitHub issue:
+
+          Issue #${ISSUE_NUMBER}: ${ISSUE_TITLE}
+
+          $(cat issue_context.txt)
+
+          Instructions:
+          1. Read the relevant source files to understand the current codebase.
+          2. Implement the changes needed to fulfill the issue.
+          3. Make sure changes are minimal and focused on the issue.
+          4. Do not modify unrelated files.
+          5. When done, output a brief summary of what you changed and why.
+          EOF
+
+      - name: Create feature branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "${{ steps.issue.outputs.branch }}"
+
+      - name: Run Goose
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOSE_MODE: auto
+          GOOSE_DISABLE_SESSION_NAMING: "true"
+          GOOSE_MAX_TURNS: "50"
+        run: |
+          goose run --no-session --instructions instructions.txt 2>&1 | tee goose_output.raw
+          # Strip ANSI escape codes
+          sed 's/\x1b\[[0-9;]*m//g' goose_output.raw > goose_output.txt
+
+      - name: Commit changes
+        id: commit
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes to commit."
+          else
+            git commit -m "fix: resolve issue #${{ steps.issue.outputs.number }} via Goose
+
+            Automatically implemented by Goose AI agent.
+            Closes #${{ steps.issue.outputs.number }}"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Push branch
+        if: steps.commit.outputs.has_changes == 'true'
+        run: git push origin "${{ steps.issue.outputs.branch }}"
+
+      - name: Create Pull Request
+        if: steps.commit.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          GOOSE_SUMMARY=$(tail -n 50 goose_output.txt)
+
+          gh pr create \
+            --title "fix: resolve issue #${{ steps.issue.outputs.number }} — ${{ github.event.issue.title }}" \
+            --body "$(cat <<EOF
+          ## Summary
+
+          Automated implementation for issue #${{ steps.issue.outputs.number }}.
+
+          ## Goose Output
+
+          \`\`\`
+          ${GOOSE_SUMMARY}
+          \`\`\`
+
+          ## Review checklist
+
+          - [ ] Changes match the issue requirements
+          - [ ] No unrelated files modified
+          - [ ] Game still runs correctly
+
+          Closes #${{ steps.issue.outputs.number }}
+
+          > Generated by [Goose](https://block.github.io/goose/) via GitHub Actions.
+          EOF
+          )" \
+            --base main \
+            --head "${{ steps.issue.outputs.branch }}"
+
+      - name: Comment on issue if no changes
+        if: steps.commit.outputs.has_changes == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ steps.issue.outputs.number }}" \
+            --body "Goose ran but did not produce any file changes for this issue. Please review the issue description and ensure it contains enough detail for implementation."
