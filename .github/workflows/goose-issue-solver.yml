@@ -86,7 +86,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b "${{ steps.issue.outputs.branch }}"
+          git checkout -B "${{ steps.issue.outputs.branch }}"
 
       - name: Run Goose
         env:
@@ -116,7 +116,7 @@ jobs:
 
       - name: Push branch
         if: steps.commit.outputs.has_changes == 'true'
-        run: git push origin "${{ steps.issue.outputs.branch }}"
+        run: git push --force-with-lease origin "${{ steps.issue.outputs.branch }}"
 
       - name: Create Pull Request
         if: steps.commit.outputs.has_changes == 'true'
