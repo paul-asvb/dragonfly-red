@@ -1,0 +1,22 @@
+You are an AI agent working on a Godot 4 game called "dragonfly-red" — a 2D space shooter.
+The project uses GDScript. Source files are in ./scripts/, scenes in ./scenes/, assets in ./assets/.
+
+Your task is to implement the following GitHub issue:
+
+Issue #2: preview
+
+TITLE: preview
+
+BODY:
+when creating a MR we should get the link to a preview environment or review app.
+
+
+
+COMMENTS:
+
+Instructions:
+1. Read the relevant source files to understand the current codebase.
+2. Implement the changes needed to fulfill the issue.
+3. Make sure changes are minimal and focused on the issue.
+4. Do not modify unrelated files.
+5. When done, output a brief summary of what you changed and why.
